@@ -4,7 +4,7 @@ import com.example.studytobyspring.user.domain.User;
 
 import java.sql.*;
 
-public abstract class UserDao {
+public class NUserDao extends UserDao {
 
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection c = getConnection();
@@ -42,5 +42,9 @@ public abstract class UserDao {
         return user;
     }
 
-    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
+        return c;
+    }
 }
