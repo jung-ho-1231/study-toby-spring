@@ -14,16 +14,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDaoTest {
 
     ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+    UserDao dao = context.getBean("userDao", UserDao.class);
 
     @Test
     void userDaoTest() throws Exception{
-        UserDao userDao = context.getBean("userDao", UserDao.class);
-        assertThat(userDao).isNotNull();
+        assertThat(dao).isNotNull();
     }
 
     @Test
     void addAndGet() throws Exception{
-        UserDao dao = context.getBean("userDao", UserDao.class);
         dao.deleteAll();
 
         assertThat(dao.getCount()).isEqualTo(0);
