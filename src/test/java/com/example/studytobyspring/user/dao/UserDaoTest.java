@@ -24,6 +24,9 @@ class UserDaoTest {
     @Test
     void addAndGet() throws Exception{
         UserDao dao = context.getBean("userDao", UserDao.class);
+        dao.deleteAll();
+
+        assertThat(dao.getCount()).isEqualTo(0);
 
         User savedUser = new User();
         savedUser.setId("park");
@@ -36,4 +39,5 @@ class UserDaoTest {
 
         assertThat(findUser.getName()).isEqualTo(savedUser.getName());
     }
+
 }
