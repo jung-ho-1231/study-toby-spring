@@ -11,11 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class UserDaoTest {
 
+    ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+
     @Test
     void userDaoTest() throws Exception{
-        ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         UserDao userDao = context.getBean("userDao", UserDao.class);
         Assertions.assertThat(userDao).isNotNull();
+    }
+    
+    @Test
+    void countConnectionMakeTest() throws Exception{
+        CountingConnectionMaker ccm = context.getBean("connectionMaker", CountingConnectionMaker.class);
+        Assertions.assertThat(ccm).isNotNull();
     }
 
 }
