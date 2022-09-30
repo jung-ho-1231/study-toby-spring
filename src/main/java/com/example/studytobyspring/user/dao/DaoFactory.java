@@ -2,6 +2,7 @@ package com.example.studytobyspring.user.dao;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 @Configuration
 public class DaoFactory {
@@ -11,7 +12,14 @@ public class DaoFactory {
     }
 
     @Bean
-    public static DConnectionMaker connectionMaker() {
+    public CountingConnectionMaker connectionMaker(){
+        return new CountingConnectionMaker(realConnectionMake());
+    }
+
+    @Bean
+    public DConnectionMaker realConnectionMake() {
         return new DConnectionMaker();
     }
+
+
 }
