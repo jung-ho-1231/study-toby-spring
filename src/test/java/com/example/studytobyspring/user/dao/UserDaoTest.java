@@ -18,11 +18,4 @@ class UserDaoTest {
         UserDao userDao = context.getBean("userDao", UserDao.class);
         Assertions.assertThat(userDao).isNotNull();
     }
-    
-    @Test
-    void countConnectionMakeTest() throws Exception{
-        CountingConnectionMaker ccm = context.getBean("connectionMaker", CountingConnectionMaker.class);
-        Assertions.assertThat(ccm).isNotNull();
-    }
-
 }
