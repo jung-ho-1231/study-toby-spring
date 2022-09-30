@@ -13,7 +13,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest
+@SpringBootTest
 class UserDaoTest {
     UserDao dao;
     private User user1;
