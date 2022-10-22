@@ -15,8 +15,6 @@ public class DaoFactory {
     public UserDao userDao() throws ClassNotFoundException {
         return new UserDao(datasource());
     }
-
-
     @Bean
     public DataSource datasource() throws ClassNotFoundException {
         SimpleDriverDataSource datasource = new SimpleDriverDataSource();
@@ -25,5 +23,10 @@ public class DaoFactory {
         datasource.setUsername("postgres");
         datasource.setPassword("postgres");
         return datasource;
+    }
+
+    @Bean
+    public JdbcContext jdbcContext() throws ClassNotFoundException {
+        return new JdbcContext(datasource());
     }
 }
