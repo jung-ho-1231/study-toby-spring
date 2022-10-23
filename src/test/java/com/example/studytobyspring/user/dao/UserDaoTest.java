@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UserDaoTest {
-    UserDao dao;
+    UserDaoImpl dao;
     private User user1;
     private User user2;
     private User user3;
@@ -23,7 +23,7 @@ class UserDaoTest {
     @BeforeEach
     void setUp() {
         ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-        dao = context.getBean("userDao", UserDao.class);
+        dao = context.getBean("userDao", UserDaoImpl.class);
 
         user1 = new User("gyumme", "박성철", "springno1");
         user2 = new User("leegw700", "이길원", "springno2");

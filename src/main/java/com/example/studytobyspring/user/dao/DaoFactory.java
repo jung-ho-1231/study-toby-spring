@@ -10,8 +10,8 @@ import java.sql.Driver;
 @Configuration
 public class DaoFactory {
     @Bean
-    public UserDao userDao() throws ClassNotFoundException {
-        return new UserDao(datasource());
+    public UserDaoImpl userDao() throws ClassNotFoundException {
+        return new UserDaoImpl(datasource());
     }
     @Bean
     public DataSource datasource() throws ClassNotFoundException {
